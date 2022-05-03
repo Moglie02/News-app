@@ -9,7 +9,7 @@ class Config:
 
 
 class ProdConfig(Config):
-
+    pass
 
 
 class DevConfig(Config):
