@@ -4,4 +4,11 @@ from.import main
 from ..request import get_news
 
 #views
+@main.route('/')
+def index():
+
+    news=get_news()
+    title = 'galaxynews'
+    return render_template('index.html', title = title,articles =news)
+    
 
