@@ -10,7 +10,7 @@ def configure_request(app):
     api_key=app.config['NEWS_API_KEY']
     base_url=app.config['NEWS_API_BASE_URL']
 
-    def get_news():
+def get_news():
         '''
         function that gets the json response to our url request
         '''
@@ -29,7 +29,7 @@ def configure_request(app):
                 news_results=process_results(news_results_list)
 
                 return news_results
-    def process_results(news_list):
+def process_results(news_list):
 
         news_results =[]
         for news_item in news_list:
