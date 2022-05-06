@@ -29,17 +29,17 @@ def configure_request(app):
                 news_results=process_results(news_results_list)
 
                 return news_results
-                def process_results(news_list):
+    def process_results(news_list):
 
-                    news_results =[]
-                    for news_item in news_list:
-                        title = news_item.get('title')
-                        description = news_item.get('description')
-                        urlToImage = news_item.get('urlToImage')
-                        content = news_item.get('content')
-                        publishedAt = news_item.get('publishedAt')
+        news_results =[]
+        for news_item in news_list:
+            title = news_item.get('title')
+            description = news_item.get('description')
+            urlToImage = news_item.get('urlToImage')
+            content = news_item.get('content')
+            publishedAt = news_item.get('publishedAt')
 
-                        news_object = News(title,description,urlToImage,content,publishedAt)
-                        news_results.append(news_object)
+            news_object = News(title,description,urlToImage,content,publishedAt)
+            news_results.append(news_object)
 
-                        return news_results
+            return news_results
