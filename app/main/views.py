@@ -1,22 +1,35 @@
-from flask import render_template
+from flask import render_template,request,redirect,url_for
 from . import main
-from ..request import get_news
+from flask import render_template,request,redirect,url_for
+from ..request import get_source,article_source,get_category,get_headlines
 
-# Views
+#our views
 @main.route('/')
 def index():
+    '''
+    Root function returning index/home page with data
+    '''
+    source= get_source()
+    headlines = get_headlines()
+    return render_template('index.html',sources=source, headlines = headlines)
+
+@main.route('/article/<id>')
+def article(id):
 
     '''
-    View root page function that returns the index page and its data
+    View article page function that returns the various article details page and its data
     '''
-    news = get_news() 
-    title = 'GALAXYNEWS'
-    return render_template('index.html', title = title,articles = news)
-@main.route('/sources')
-def sources():
+    # title= 'Articles'
+    articles = article_source(id)
+    return render_template('article.html',articles= articles,id=id )
 
+@main.route('/categories/<cat_name>')
+def category(cat_name):
     '''
-    View news page function that returns the news details page and its data
+    function to return the categories.html page and its content
     '''
-    news = get_sources()
-    return render_template('news.html',sources = news)
+    category = get_category(cat_name)
+    title = f'{cat_name}'
+    cat = cat_name
+
+    return render_template('categories.html',title = title,category = category, cat= cat_name)
